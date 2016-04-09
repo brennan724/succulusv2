@@ -1,6 +1,6 @@
 #platfwork.py
 
-import sys, pygame, random
+import sys, pygame, random, os
 pygame.init()
 
 size = width, height = 1000, 700
@@ -128,4 +128,10 @@ while 1:
     #screen.blit(text, textrect)
     screen.blit(succulus, succulusrect)
     pygame.display.flip()
+
+    if len(profs) == 0:
+        # OS X
+        python = sys.executable
+        os.exec1(python,python,*sys.argv)
+        # 
  
