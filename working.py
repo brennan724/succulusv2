@@ -84,7 +84,16 @@ while 1:
                 if x >= 0:
                     x -= speed
 
-    succulusrect = succulusrect.move([x,y])
+    if succulusrect.center[0] - succulusrect.w//2 + x < 0 or succulusrect.center[0] + succulusrect.w//2 + x > width:
+        if succulusrect.center[1] - succulusrect.h//2 + y < 0 or succulusrect.center[1] + succulusrect.h//2 + y > height:
+            succulusrect = succulusrect.move([0,0])
+        else:
+            succulusrect = succulusrect.move([0,y])
+    else:
+        if succulusrect.center[1] - succulusrect.h//2 + y < 0 or succulusrect.center[1] + succulusrect.h//2 + y > height:
+            succulusrect = succulusrect.move([x,0])
+        else:
+            succulusrect = succulusrect.move([x,y])
 
     amyrect = amyrect.move([x2,y2])
     annarect = annarect.move([x3,y3])
