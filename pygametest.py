@@ -6,7 +6,7 @@ from pygame.locals import *
 def main():
 	# Initialise screen
 	pygame.init()
-	screen = pygame.display.set_mode((150, 50))
+	screen = pygame.display.set_mode((700, 500))
 	pygame.display.set_caption('Basic Pygame program')
 
 	# Fill background
@@ -25,6 +25,27 @@ def main():
 	screen.blit(background, (0, 0))
 	pygame.display.flip()
 
+	# draw rectangle to screen
+
+	# rectangle = pygame.draw.rect(background, (60,60,100), (0,0,50,50), 5)
+	background.fill((60,60,100), rectangle)
+	print(rectangle.top, rectangle.left, rectangle.bottom, rectangle.right)
+	print(rectangle.size)
+	print(rectangle.center)
+	rectangle.center = (50,50)
+	
+	# background.scroll(200,300)
+	# rectangle.move(200,300)
+	# rectangle = pygame.draw.rect(background, (60,60,100), (50,50,50,50),5)
+
+	# # load images, make sprites
+	# img = pygame.image.load('fire_sprite.png')
+	# pygame.Player.images = [img, pygame.transform.flip(img, 1, 0)]
+	# all = pygame.sprite.RenderUpdates()
+	# Player.containers = all
+	# player = Player()
+
+
 	# Event loop
 	while 1:
 		for event in pygame.event.get():
@@ -33,6 +54,14 @@ def main():
 
 		screen.blit(background, (0, 0))
 		pygame.display.flip()
+
+		# rectangle = pygame.draw.rect(background, (60,60,100), (0,0,50,50), 5)
+		# background.fill((60,60,100), rectangle)
+		# background.scroll(200,300)
+		# rectangle.move(200,300)
+
+def move(rectangle, position):
+	pass
 
 
 if __name__ == '__main__': main()
