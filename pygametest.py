@@ -27,13 +27,12 @@ def main():
 
 	# draw rectangle to screen
 
-	# rectangle = pygame.draw.rect(background, (60,60,100), (0,0,50,50), 5)
-	background.fill((60,60,100), rectangle)
+	rectangle = pygame.draw.rect(background, (60,60,100), (0,0,50,50), 5)
 	print(rectangle.top, rectangle.left, rectangle.bottom, rectangle.right)
 	print(rectangle.size)
 	print(rectangle.center)
 	rectangle.center = (50,50)
-	
+	background.fill((60,60,100), rectangle)
 	# background.scroll(200,300)
 	# rectangle.move(200,300)
 	# rectangle = pygame.draw.rect(background, (60,60,100), (50,50,50,50),5)
