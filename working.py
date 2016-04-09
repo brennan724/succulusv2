@@ -35,9 +35,20 @@ jeffrect = jeff.get_rect()
 obamarect = obama.get_rect()
 putinrect = putin.get_rect()
 sherrirect = sherri.get_rect()
-stevierect = steviep.get_rect()
+stevieprect = steviep.get_rect()
 
-
+profs = [
+[amy,amyrect,random.randrange(10),random.randrange(10)],
+[andy,andyrect,random.randrange(10),random.randrange(10)],
+[dln,dlnrect,random.randrange(10),random.randrange(10)],
+[dave,daverect,random.randrange(10),random.randrange(10)],
+[jadrian,jadrianrect,random.randrange(10),random.randrange(10)],
+[jeff,jeffrect,random.randrange(10),random.randrange(10)],
+[obama,obamarect,random.randrange(10),random.randrange(10)],
+[putin,putinrect,random.randrange(10),random.randrange(10)],
+[sherri,sherrirect,random.randrange(10),random.randrange(10)],
+[steviep,stevieprect,random.randrange(10),random.randrange(10)]
+]
 
 
 font = pygame.font.Font(None, 20)
@@ -47,14 +58,11 @@ ren = font.render(text, 0, color, space)
 
 y = 0
 x = 0
-x2 = random.randrange(10)
-y2 = random.randrange(10)
-x3 = random.randrange(10)
-y3 = random.randrange(10)
 speed = 5
 movetab = []
 
 while 1:
+    #event handling
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
         elif event.type == pygame.KEYDOWN:
@@ -83,7 +91,11 @@ while 1:
             elif event.key == 100: #d
                 if x >= 0:
                     x -= speed
-
+    
+    #collision detection
+    #blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
+    
+    #drawing
     if succulusrect.center[0] - succulusrect.w//2 + x < 0 or succulusrect.center[0] + succulusrect.w//2 + x > width:
         if succulusrect.center[1] - succulusrect.h//2 + y < 0 or succulusrect.center[1] + succulusrect.h//2 + y > height:
             succulusrect = succulusrect.move([0,0])
@@ -94,20 +106,19 @@ while 1:
             succulusrect = succulusrect.move([x,0])
         else:
             succulusrect = succulusrect.move([x,y])
-
-    amyrect = amyrect.move([x2,y2])
-    annarect = annarect.move([x3,y3])
-    if amyrect.center[0] - amyrect.w//2 + x < 0 or amyrect.center[0] + amyrect.w//2 + x > width:
-        x2 = - x2
-    if amyrect.center[1] - amyrect.h//2 + y < 0 or amyrect.center[1] + amyrect.h//2 + y > height:
-        y2 = - y2
-    if annarect.center[0] - annarect.w//2 + x < 0 or annarect.center[0] + annarect.w//2 + x > width:
-        x3 = - x3
-    if annarect.center[1] - annarect.h//2 + y < 0 or annarect.center[1] + annarect.h//2 + y > height:
-        y3 = - y3
+            
     screen.blit(space, spacerect)
-    screen.blit(amy, amyrect)
-    screen.blit(anna, annarect)
+    for p in profs:
+        if p[1].center[0] - p[1].w//2 + p[2] < 0 or p[1].center[0] + p[1].w//2 + p[2] > width:
+            p[2] = - p[2]
+        if p[1].center[1] - p[1].h//2 + p[3] < 0 or p[1].center[1] + p[1].h//2 + p[3] > height:
+            p[3] = - p[3]
+        p[1] = p[1].move([p[2],p[3]])
+        screen.blit(p[0],p[1])
+#    if amyrect.center[0] - amyrect.w//2 + x < 0 or amyrect.center[0] + amyrect.w//2 + x > width:
+#        x2 = - x2
+#    if amyrect.center[1] - amyrect.h//2 + y < 0 or amyrect.center[1] + amyrect.h//2 + y > height:
+#        y2 = - y2
     #screen.blit(text, textrect)
     screen.blit(succulus, succulusrect)
     pygame.display.flip()
