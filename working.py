@@ -61,6 +61,9 @@ x = 0
 speed = 5
 movetab = []
 
+succulusrect = succulusrect.move([width-succulusrect.w,succulusrect.h])
+screen.blit(succulus,succulusrect)
+
 while 1:
     #event handling
     for event in pygame.event.get():
@@ -93,7 +96,10 @@ while 1:
                     x -= speed
     
     #collision detection
-    #blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
+    for p in profs:
+        if succulusrect.colliderect(p[1]):
+            #WE ATE U UP/
+            profs.remove(p)
     
     #drawing
     if succulusrect.center[0] - succulusrect.w//2 + x < 0 or succulusrect.center[0] + succulusrect.w//2 + x > width:
