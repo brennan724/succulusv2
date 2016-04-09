@@ -1,5 +1,5 @@
 #platfwork.py
-<<<<<<< HEAD
+
 import sys, pygame, random
 pygame.init()
 
@@ -51,23 +51,6 @@ x2 = random.randrange(10)
 y2 = random.randrange(10)
 x3 = random.randrange(10)
 y3 = random.randrange(10)
-=======
-import sys, pygame
-pygame.init()
-
-size = width, height = 1000, 800
-black = 0, 0, 0
-
-screen = pygame.display.set_mode(size)
-
-ball = pygame.image.load("shitty vacuum.png")
-space = pygame.image.load("space.png")
-ballrect = ball.get_rect()
-spacerect = space.get_rect()
-
-y = 0
-x = 0
->>>>>>> a698157a9e0a1d4c7cbfa822bb1cf1ff9b88fdb9
 speed = 5
 movetab = []
 
@@ -100,7 +83,7 @@ while 1:
             elif event.key == 100: #d
                 if x >= 0:
                     x -= speed
-<<<<<<< HEAD
+
     succulusrect = succulusrect.move([x,y])
 
     amyrect = amyrect.move([x2,y2])
@@ -118,10 +101,5 @@ while 1:
     screen.blit(anna, annarect)
     #screen.blit(text, textrect)
     screen.blit(succulus, succulusrect)
-=======
-    ballrect = ballrect.move([x,y])
-    screen.blit(space, spacerect)
-    screen.blit(ball, ballrect)
->>>>>>> a698157a9e0a1d4c7cbfa822bb1cf1ff9b88fdb9
     pygame.display.flip()
  
