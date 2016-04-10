@@ -63,7 +63,7 @@ profs = [
 [steviep,stevieprect,random.randrange(10),random.randrange(10)]
 ] #list of images and vectors for later iteration
 
-backup = profs.copy() #so we can restart later
+backup = copy.copy(profs) #so we can restart later
 
 font = pygame.font.Font(None, 150)
 text = 'Space Vacuum'
@@ -97,7 +97,7 @@ while 1:
                 if x <= 0:
                     x += speed
             elif event.key == 121 and len(profs) == 0: #y
-                profs = backup.copy()
+                profs = copy.copy(backup)
             elif event.key == 110 and len(profs) == 0: #n
                 sys.exit()
         elif event.type == pygame.KEYUP:
