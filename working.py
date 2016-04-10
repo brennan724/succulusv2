@@ -4,7 +4,9 @@ import sys, pygame, random, os
 pygame.init()
 
 size = width, height = 1000, 700
-color = 250, 0, 0
+color = 250, 250, 250
+#pygame.mixer.music.load("soundtrack.mp3")
+#pygame.mixer.music.play(-1, 0.0)
 
 screen = pygame.display.set_mode(size)
 
@@ -16,6 +18,7 @@ dln = pygame.image.load("dln.gif")
 dave = pygame.image.load("dave.gif")
 jadrian = pygame.image.load("jadrian.gif")
 jeff = pygame.image.load("jeff.gif")
+layla = pygame.image.load("layla.png")
 obama = pygame.image.load("obama.gif")
 putin = pygame.image.load("putin.gif")
 sherri = pygame.image.load("sherri.gif")
@@ -32,6 +35,7 @@ dlnrect = dln.get_rect()
 daverect = dave.get_rect()
 jadrianrect = jadrian.get_rect()
 jeffrect = jeff.get_rect()
+laylarect = layla.get_rect()
 obamarect = obama.get_rect()
 putinrect = putin.get_rect()
 sherrirect = sherri.get_rect()
@@ -43,7 +47,7 @@ profs = [
 [dln,dlnrect,random.randrange(10),random.randrange(10)],
 [dave,daverect,random.randrange(10),random.randrange(10)],
 [jadrian,jadrianrect,random.randrange(10),random.randrange(10)],
-[jeff,jeffrect,random.randrange(10),random.randrange(10)],
+[jeff,jeffrect,random.randrange(10),random.randrange(10)], [layla,laylarect,random.randrange(10),random.randrange(10)],
 [obama,obamarect,random.randrange(10),random.randrange(10)],
 [putin,putinrect,random.randrange(10),random.randrange(10)],
 [sherri,sherrirect,random.randrange(10),random.randrange(10)],
@@ -51,10 +55,11 @@ profs = [
 ]
 
 
-font = pygame.font.Font(None, 20)
+font = pygame.font.Font(None, 150)
 text = 'Space Vacuum'
 size = font.size(text)
-ren = font.render(text, 0, color, space)
+ren = font.render(text, 0, color)
+textrect = ren.get_rect()
 
 y = 0
 x = 0
@@ -125,13 +130,9 @@ while 1:
 #        x2 = - x2
 #    if amyrect.center[1] - amyrect.h//2 + y < 0 or amyrect.center[1] + amyrect.h//2 + y > height:
 #        y2 = - y2
-    #screen.blit(text, textrect)
+    screen.blit(ren, textrect)
     screen.blit(succulus, succulusrect)
     pygame.display.flip()
 
-    if len(profs) == 0:
-        # OS X
-        python = sys.executable
-        os.exec1(python,python,*sys.argv)
-        # 
+
  
