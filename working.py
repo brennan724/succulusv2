@@ -1,6 +1,6 @@
 #platfwork.py
 
-import sys, pygame, random, os, time, tkinter
+import sys, pygame, random, os, time, tkinter,copy
 pygame.init()
 
 root = tkinter.Tk()
@@ -59,6 +59,7 @@ profs = [
 [steviep,stevieprect,random.randrange(10),random.randrange(10)]
 ]
 
+backup = profs.copy()
 
 font = pygame.font.Font(None, 150)
 text = 'Space Vacuum'
@@ -131,14 +132,12 @@ while 1:
             p[3] = - p[3]
         p[1] = p[1].move([p[2],p[3]])
         screen.blit(p[0],p[1])
-#    if amyrect.center[0] - amyrect.w//2 + x < 0 or amyrect.center[0] + amyrect.w//2 + x > width:
-#        x2 = - x2
-#    if amyrect.center[1] - amyrect.h//2 + y < 0 or amyrect.center[1] + amyrect.h//2 + y > height:
-#        y2 = - y2
     if time.clock() - start_time < 5:
         screen.blit(ren, textrect)
     screen.blit(succulus, succulusrect)
     pygame.display.flip()
+    if len(profs) == 0:
+        profs = backup.copy()
 
 
  
