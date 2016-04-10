@@ -1,13 +1,14 @@
 #platfwork.py
 
-import sys, pygame, random, os
+import sys, pygame, random, os, time
 pygame.init()
 
 size = width, height = 1000, 700
 color = 250, 250, 250
 pygame.mixer.init()
-pygame.mixer.music.load("/Users/saracanilang/Desktop/carlhacks/succulusv2/soundtrack.OGG")
+pygame.mixer.music.load("soundtrack.OGG")
 pygame.mixer.music.play(-1, 0.0)
+start_time = time.clock()
 
 screen = pygame.display.set_mode(size)
 
@@ -132,7 +133,8 @@ while 1:
 #        x2 = - x2
 #    if amyrect.center[1] - amyrect.h//2 + y < 0 or amyrect.center[1] + amyrect.h//2 + y > height:
 #        y2 = - y2
-    screen.blit(ren, textrect)
+    if time.clock() - start_time < 5:
+        screen.blit(ren, textrect)
     screen.blit(succulus, succulusrect)
     pygame.display.flip()
 
