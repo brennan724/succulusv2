@@ -1,9 +1,14 @@
 #platfwork.py
 
-import sys, pygame, random, os, time, tkinter,copy
+import sys, pygame, random, os, time,copy
 pygame.init()
 
-root = tkinter.Tk()
+try: 
+    import tkinter as tk
+except:
+    import Tkinter as tk
+
+root = tk.Tk()
 
 size = width, height = root.winfo_screenwidth()-100, root.winfo_screenheight()-100
 color = 250, 250, 250
@@ -14,7 +19,7 @@ start_time = time.clock()
 
 screen = pygame.display.set_mode(size)
 
-succulus = pygame.image.load("shitty vacuum.png")
+succulus = pygame.image.load("shitty vacuum.png") #create image objects
 amy = pygame.image.load("amy.gif")
 andy = pygame.image.load("andy.gif")
 anna = pygame.image.load("anna.gif")
@@ -27,12 +32,11 @@ obama = pygame.image.load("obama.gif")
 putin = pygame.image.load("putin.gif")
 sherri = pygame.image.load("sherri.gif")
 steviep = pygame.image.load("stevie_p.gif")
+space = pygame.image.load("space.png") #background
 
-space = pygame.image.load("space.png")
 succulusrect = succulus.get_rect()
 spacerect = space.get_rect()
-
-amyrect = amy.get_rect()
+amyrect = amy.get_rect() #get rekt
 andyrect = andy.get_rect()
 annarect = anna.get_rect()
 dlnrect = dln.get_rect()
@@ -57,9 +61,9 @@ profs = [
 [putin,putinrect,random.randrange(10),random.randrange(10)],
 [sherri,sherrirect,random.randrange(10),random.randrange(10)],
 [steviep,stevieprect,random.randrange(10),random.randrange(10)]
-]
+] #list of images and vectors for later iteration
 
-backup = profs.copy()
+backup = profs.copy() #so we can restart later
 
 font = pygame.font.Font(None, 150)
 text = 'Space Vacuum'
@@ -75,7 +79,7 @@ movetab = []
 succulusrect = succulusrect.move([width-succulusrect.w,succulusrect.h])
 screen.blit(succulus,succulusrect)
 
-while 1:
+while 1: 
     #event handling
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
@@ -92,6 +96,10 @@ while 1:
             elif event.key == 100: #d
                 if x <= 0:
                     x += speed
+            elif event.key == 121 and len(profs) == 0: #y
+                profs = backup.copy()
+            elif event.key == 110 and len(profs) == 0: #n
+                sys.exit()
         elif event.type == pygame.KEYUP:
             if event.key == 119: #w
                 if y <= 0:
@@ -135,9 +143,12 @@ while 1:
     if time.clock() - start_time < 5:
         screen.blit(ren, textrect)
     screen.blit(succulus, succulusrect)
-    pygame.display.flip()
-    if len(profs) == 0:
-        profs = backup.copy()
-
-
- 
+    
+    if len(profs) == 0: #display endgame text
+        font = pygame.font.Font(None, 150)
+        text = 'Restart? (y/n)'
+        size = font.size(text)
+        endgame = font.render(text, 0, color)
+        endgamerect = endgame.get_rect()
+        screen.blit(endgame, endgamerect)
+    pygame.display.flip() 
