@@ -1,9 +1,11 @@
 #platfwork.py
 
-import sys, pygame, random, os, time
+import sys, pygame, random, os, time, tkinter
 pygame.init()
 
-size = width, height = 1000, 700
+root = tkinter.Tk()
+
+size = width, height = root.winfo_screenwidth()-100, root.winfo_screenheight()-100
 color = 250, 250, 250
 pygame.mixer.init()
 pygame.mixer.music.load("soundtrack.OGG")
