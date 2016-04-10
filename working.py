@@ -5,8 +5,9 @@ pygame.init()
 
 size = width, height = 1000, 700
 color = 250, 250, 250
-#pygame.mixer.music.load("soundtrack.mp3")
-#pygame.mixer.music.play(-1, 0.0)
+pygame.mixer.init()
+pygame.mixer.music.load("/Users/saracanilang/Desktop/carlhacks/succulusv2/soundtrack.OGG")
+pygame.mixer.music.play(-1, 0.0)
 
 screen = pygame.display.set_mode(size)
 
@@ -47,7 +48,8 @@ profs = [
 [dln,dlnrect,random.randrange(10),random.randrange(10)],
 [dave,daverect,random.randrange(10),random.randrange(10)],
 [jadrian,jadrianrect,random.randrange(10),random.randrange(10)],
-[jeff,jeffrect,random.randrange(10),random.randrange(10)], [layla,laylarect,random.randrange(10),random.randrange(10)],
+[jeff,jeffrect,random.randrange(10),random.randrange(10)],
+[layla,laylarect,random.randrange(10),random.randrange(10)],
 [obama,obamarect,random.randrange(10),random.randrange(10)],
 [putin,putinrect,random.randrange(10),random.randrange(10)],
 [sherri,sherrirect,random.randrange(10),random.randrange(10)],
