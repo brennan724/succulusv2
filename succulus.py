@@ -34,6 +34,7 @@ obama = pygame.image.load("obama.gif")
 putin = pygame.image.load("putin.gif")
 sherri = pygame.image.load("sherri.gif")
 steviep = pygame.image.load("stevie_p.gif")
+schiller = pygame.image.load("schiller.gif")
 space = pygame.image.load("space.png") #background
 
 succulusrect = succulus.get_rect()
@@ -50,6 +51,7 @@ obamarect = obama.get_rect()
 putinrect = putin.get_rect()
 sherrirect = sherri.get_rect()
 stevieprect = steviep.get_rect()
+schillerrect = schiller.get_rect()
 
 profs = [
 [amy,amyrect,random.randrange(10),random.randrange(10)],
@@ -62,7 +64,8 @@ profs = [
 [obama,obamarect,random.randrange(10),random.randrange(10)],
 [putin,putinrect,random.randrange(10),random.randrange(10)],
 [sherri,sherrirect,random.randrange(10),random.randrange(10)],
-[steviep,stevieprect,random.randrange(10),random.randrange(10)]
+[steviep,stevieprect,random.randrange(10),random.randrange(10)],
+[schiller, schillerrect,random.randrange(10),random.randrange(10)]
 ] #list of images and vectors for later iteration
 
 backup = copy.copy(profs) #so we can restart later
